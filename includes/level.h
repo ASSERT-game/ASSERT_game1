@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   entry.c                                            :+:      :+:    :+:   */
+/*   level.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/02 04:02:00 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/02 04:23:05 by kmira            ###   ########.fr       */
+/*   Created: 2019/08/02 07:34:29 by kmira             #+#    #+#             */
+/*   Updated: 2019/08/02 07:36:18 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "default.h"
+#ifndef LEVEL_H
+# define LEVEL_H
 
-int		main(void)
+typedef struct	s_level
 {
-	int	*scene;
+	struct
+	{
+		int at;
+		int destination;
+	} scenes;
+	int exit_condition;
+}		t_level;
 
-	*scene = TRANSITION_SCENE;
-	LOAD_SCENE(main_menu);
-	return (0);
-}
+#endif

@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   entry.c                                            :+:      :+:    :+:   */
+/*   transition.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/02 04:02:00 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/02 04:23:05 by kmira            ###   ########.fr       */
+/*   Created: 2019/08/02 04:53:19 by kmira             #+#    #+#             */
+/*   Updated: 2019/08/02 07:29:35 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
 
-int		main(void)
+void	transition(int from, int destination)
 {
-	int	*scene;
-
-	*scene = TRANSITION_SCENE;
-	LOAD_SCENE(main_menu);
-	return (0);
+	printf("Here is your transition!\n");
 }

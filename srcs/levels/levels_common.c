@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   level.h                                            :+:      :+:    :+:   */
+/*   levels_common.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/02 07:34:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/02 07:56:40 by kmira            ###   ########.fr       */
+/*   Created: 2019/08/02 07:54:24 by kmira             #+#    #+#             */
+/*   Updated: 2019/08/02 08:08:51 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEVEL_H
-# define LEVEL_H
+#include "default.h"
+#include "level.h"
 
-typedef struct	s_normal_level
+int		break__of_level(t_normal_level *level_cont)
 {
-	struct
-	{
-		int at;
-		int destination;
-	} scenes;
-	int exit_condition;
-}		t_normal_level;
+	if (level_cont->exit_condition == 0)
+		return (0);
+	else
+		return (1);
+}
 
-int				break__of_level(t_normal_level *level_1_cont);
-void			listen_of_level(t_normal_level *level_cont);
+void	listen_of_level(t_normal_level *level_cont)
+{
+	return ;
+}
 
-#endif
+void	render_of_level(void)
+{
+	printf("This is your frame\n");
+	return ;
+}

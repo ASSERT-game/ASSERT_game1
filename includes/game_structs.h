@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   level.h                                            :+:      :+:    :+:   */
+/*   game_structs.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/02 07:34:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/02 07:56:40 by kmira            ###   ########.fr       */
+/*   Created: 2019/08/02 21:29:40 by kmira             #+#    #+#             */
+/*   Updated: 2019/08/03 00:55:02 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEVEL_H
-# define LEVEL_H
+#ifndef GAME_STRUCTS_H
+# define GAME_STRUCTS_H
 
-typedef struct	s_normal_level
+# include <ncurses.h>
+
+# include "default.h"
+
+typedef struct	s_char_map
 {
-	struct
-	{
-		int at;
-		int destination;
-	} scenes;
-	int exit_condition;
-}		t_normal_level;
+	char	*line;
+	char	frame[WIN_ROWS * WIN_COLS + 1];
 
-int				break__of_level(t_normal_level *level_1_cont);
-void			listen_of_level(t_normal_level *level_cont);
+}				t_char_map;
+
+
+typedef struct	s_screen
+{
+	WINDOW	*window;
+}				t_screen;
 
 #endif

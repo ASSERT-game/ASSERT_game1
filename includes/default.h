@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 00:56:05 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 11:27:46 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,19 @@ WINDOW	*init_setup(void);
 ** FILE: assets.c
 */
 
-char	*spaceship_sprite(void);
-int		*spaceship_attributes(void);
+char	*spaceship01_sprite(void);
+int		*spaceship01_attributes(void);
+
+char	*spaceship02_sprite(void);
+int		*spaceship02_attributes(void);
 
 char	*enemy01_sprite(void);
 int		*enemy01_attributes(void);
 
-char	*bullet_sprite(void);
-int		*bullet_attribute(void);
+char	*bullet01_sprite(void);
+int		*bullet01_attribute(void);
+
+char	*bullet02_sprite(void);
+int		*bullet02_attribute(void);
 
 #endif

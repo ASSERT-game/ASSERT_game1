@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 21:29:40 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 00:18:49 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 11:19:10 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,18 @@ typedef struct	s_model
 	void		**sprite_frame;
 }				t_model;
 
+typedef union	u_spawn_bullet
+{
+	void		(*spawn)(t_sprite *sprites, int row, int col);
+}				t_spawn_bullet;
+
 typedef	struct	s_spaceship
 {
-	t_model		model;
-	t_sprite	sprites;
-	int			x;
-	int			y;
+	t_model			model;
+	t_sprite		sprites;
+	t_spawn_bullet	bullet;
+	int				x;
+	int				y;
 }				t_spaceship;
 
 #endif

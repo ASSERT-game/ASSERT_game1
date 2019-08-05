@@ -6,14 +6,54 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 00:49:32 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 11:46:02 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
 #include "level.h"
 
-#define SPRITE_COUNT_LEVEL_1 100
+#define SPRITE_COUNT_LEVEL_1 200
+
+void			spawn_bullet01(t_sprite *sprites, int row, int col)
+{
+	int i;
+
+	i = 0;
+	while (sprites[i].sprite != NULL)
+		i++;
+	sprites[i].sprite = bullet01_sprite();
+	sprites[i].sprite_attribute = bullet01_attribute();
+	sprites[i].screen_x = col + 2;
+	sprites[i].screen_y = row;
+	while (sprites[i].sprite != NULL)
+		i++;
+	sprites[i].sprite = bullet01_sprite();
+	sprites[i].sprite_attribute = bullet01_attribute();
+	sprites[i].screen_x = col + 2;
+	sprites[i].screen_y = row + 4;
+	return ;
+}
+
+void			spawn_bullet02(t_sprite *sprites, int row, int col)
+{
+	int i;
+
+	i = 0;
+	while (sprites[i].sprite != NULL)
+		i++;
+	sprites[i].sprite = bullet02_sprite();
+	sprites[i].sprite_attribute = bullet02_attribute();
+	sprites[i].screen_x = col + 2;
+	sprites[i].screen_y = row;
+	while (sprites[i].sprite != NULL)
+		i++;
+	sprites[i].sprite = bullet02_sprite();
+	sprites[i].sprite_attribute = bullet02_attribute();
+	sprites[i].screen_x = col + 2;
+	sprites[i].screen_y = row + 4;
+	return ;
+}
 
 t_normal_level	*alloc__of_level_1(void)
 {
@@ -28,9 +68,11 @@ t_normal_level	*alloc__of_level_1(void)
 	result->screen->window = init_setup();
 
 	result->sprites = malloc(sizeof(*(result->sprites)) * (SPRITE_COUNT_LEVEL_1));
+	bzero(result->sprites, sizeof(*(result->sprites)) * (SPRITE_COUNT_LEVEL_1));
 
-	result->player1.sprites.sprite = spaceship_sprite();
-	result->player1.sprites.sprite_attribute = spaceship_attributes();
+	result->player1.sprites.sprite = spaceship02_sprite();
+	result->player1.sprites.sprite_attribute = spaceship02_attributes();
+	result->player1.bullet.spawn = spawn_bullet02;
 	result->player1.x = 5;
 	result->player1.y = 5;
 
@@ -58,21 +100,6 @@ t_normal_level	*alloc__of_level_1(void)
 	return (result);
 }
 
-void			spawn_bullet(t_sprite *sprites, int row, int col)
-{
-	int i;
-
-	i = 0;
-	while (sprites[i].sprite != NULL)
-		i++;
-	sprites[i].sprite = bullet_sprite();
-	sprites[i].sprite_attribute = bullet_attribute();
-	sprites[i].screen_x = col;
-	sprites[i].screen_y = row;
-	sprites[i + 1] = NULL_SPRITE;
-	return ;
-}
-
 void			update_of_level_1(t_normal_level *level_1_cont)
 {
 	char		in_char;
@@ -87,13 +114,33 @@ void			update_of_level_1(t_normal_level *level_1_cont)
 	if (in_char == 's')
 		player->screen_y = player->screen_y + 1;
 	if (in_char == 'a')
-		player->screen_x = player->screen_x - 1;
+		player->screen_x = player->screen_x - 2;
 	if (in_char == 'd')
-		player->screen_x = player->screen_x + 1;
+		player->screen_x = player->screen_x + 2;
 	if (in_char == ' ')
+		level_1_cont->player1.bullet.spawn(level_1_cont->sprites, player->screen_y, player->screen_x);
+	if (in_char == 't')
 	{
-		spawn_bullet(level_1_cont->sprites, player->screen_y, player->screen_x + 2);
-		spawn_bullet(level_1_cont->sprites, player->screen_y + 4, player->screen_x + 2);
+		if (level_1_cont->player1.sprites.sprite == spaceship01_sprite())
+		{
+			level_1_cont->player1.sprites.sprite = spaceship02_sprite();
+			level_1_cont->player1.sprites.sprite_attribute = spaceship02_attributes();
+
+			level_1_cont->sprites[0].sprite = spaceship02_sprite();
+			level_1_cont->sprites[0].sprite_attribute = spaceship02_attributes();
+
+			level_1_cont->player1.bullet.spawn = spawn_bullet02;
+		}
+		else
+		{
+			level_1_cont->player1.sprites.sprite = spaceship01_sprite();
+			level_1_cont->player1.sprites.sprite_attribute = spaceship01_attributes();
+
+			level_1_cont->sprites[0].sprite = spaceship01_sprite();
+			level_1_cont->sprites[0].sprite_attribute = spaceship01_attributes();
+
+			level_1_cont->player1.bullet.spawn = spawn_bullet01;
+		}
 	}
 
 	level_1_cont->sprites[1].screen_x = level_1_cont->sprites[1].screen_x - 1;
@@ -101,10 +148,37 @@ void			update_of_level_1(t_normal_level *level_1_cont)
 	int j = 0;
 	while (level_1_cont->sprites[j].sprite != NULL)
 	{
-		if (level_1_cont->sprites[j].sprite[0] == '>')
+		if (level_1_cont->sprites[j].sprite[0] == '>' || level_1_cont->sprites[j].sprite[0] == '*')
+		{
 			level_1_cont->sprites[j].screen_x = level_1_cont->sprites[j].screen_x + 1;
+			if (level_1_cont->sprites[j].screen_x > GAME_COLS)
+				level_1_cont->sprites[j] = EMPTY_SPRITE;
+		}
+		else if (level_1_cont->sprites[j].sprite[0] == '*')
+		{
+			level_1_cont->sprites[j].screen_x = level_1_cont->sprites[j].screen_x + 1;
+			if (level_1_cont->sprites[j].screen_x > GAME_COLS - 40)
+				level_1_cont->sprites[j] = EMPTY_SPRITE;
+		}
 		j++;
 	}
+
+	int	i;
+	i = 0;
+	while (level_1_cont->sprites[i].sprite != NULL)
+	{
+		if (level_1_cont->sprites[i].sprite == (char *)1)
+		{
+			while (&level_1_cont->sprites[i] < &level_1_cont->sprites[j] && (level_1_cont->sprites[j].sprite == NULL || level_1_cont->sprites[j].sprite == (char *)1))
+				j--;
+			level_1_cont->sprites[i] = level_1_cont->sprites[j];
+			level_1_cont->sprites[j] = NULL_SPRITE;
+		}
+		i++;
+	}
+	mvwaddch(level_1_cont->screen->window, 2, 2, '0');
+	wrefresh(level_1_cont->screen->window);
+
 	level_1_cont->exit_condition--;
 	return ;
 }

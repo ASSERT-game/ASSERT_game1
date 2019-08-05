@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 21:23:26 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/03 02:29:39 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/04 21:43:07 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,48 @@
 ** screen is being overwritten.
 */
 
-void	render(t_char_map map, t_screen *screen)
+void	render_sprites(t_sprite *sprites, t_screen *screen)
 {
 	int	i;
-	int	offset;
+	int	j;
+	int	start_col;
+	int	start_row;
 
 	i = 0;
-	offset = VIEW_OFFSET;
-	while (i < GAME_ROWS)
+	while (sprites[i].sprite != NULL)
 	{
-		mvwprintw(screen->window, i + 1, 1, "%.*s", GAME_COLS, &map.frame[VIEW_OFFSET + (i * (WIN_COLS))]);
+		j = 0;
+		start_col = sprites[i].screen_x;
+		start_row = sprites[i].screen_y;
+		while (sprites[i].sprite[j] != '\0')
+		{
+			if (sprites[i].sprite[j] == '\n')
+			{
+				sprites[i].screen_y = sprites[i].screen_y + 1;
+				sprites[i].screen_x = start_col;
+			}
+			else
+			{
+				if (sprites[i].sprite[j] != ' ')
+				{
+					wattron(screen->window, sprites[i].sprite_attribute[j]);
+					mvwaddch(screen->window, sprites[i].screen_y, sprites[i].screen_x, sprites[i].sprite[j]);
+					wattroff(screen->window, sprites[i].sprite_attribute[j]);
+				}
+				sprites[i].screen_x = sprites[i].screen_x + 1;
+			}
+			j++;
+		}
+		sprites[i].screen_x = start_col;
+		sprites[i].screen_y = start_row;
 		i++;
 	}
+}
+
+void	render(t_sprite *sprites, t_screen *screen)
+{
+	werase(screen->window);
+	box(screen->window, 0, 0);
+	render_sprites(sprites, screen);
 	wrefresh(screen->window);
 }

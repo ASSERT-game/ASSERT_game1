@@ -6,30 +6,12 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/03 02:40:15 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/03 20:11:46 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
 #include "main_menu.h"
-
-WINDOW	*init_setup(void)
-{
-	WINDOW *window;
-
-	if (initscr() == OK)
-	{
-		cbreak();
-		noecho();
-		start_color();
-		curs_set(0);
-	}
-	window = newwin(GAME_ROWS + 2, GAME_COLS + 2, 0, 0);
-	// nodelay(window, true);
-	box(window, 0, 0);
-	wrefresh(window);
-	return (window);
-}
 
 int			break__of_main_menu(t_main_menu *main_menu_cont)
 {

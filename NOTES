@@ -1,0 +1,10 @@
+  c>
+ >*
+  [ )
+ >*
+  c>
+
+
+
+
+gcc level1.c levels_common.c ../render.c ../transition/transition.c ../preperation.c -I../../includes -lncurses

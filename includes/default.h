@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/03 01:39:23 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/04 22:15:59 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** TYPEDEFS
+*/
+
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
 ** HEADERS
 */
 
@@ -58,6 +64,30 @@
 void	enter_main_menu(int *scene);
 
 void	transition(int from, int destination);
-void	render(t_char_map map, t_screen *screen);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: render.c
+*/
+
+void	render(t_sprite *sprites, t_screen *screen);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: preperation.c
+*/
+
+WINDOW	*init_setup(void);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: assets.c
+*/
+
+char	*spaceship_sprite();
+int		*spaceship_attributes(void);
+
+char	*enemy01_sprite(void);
+int		*enemy01_attributes(void);
 
 #endif

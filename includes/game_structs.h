@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 21:29:40 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/04 22:02:36 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 00:18:49 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct	s_model
 typedef	struct	s_spaceship
 {
 	t_model		model;
+	t_sprite	sprites;
 	int			x;
 	int			y;
 }				t_spaceship;

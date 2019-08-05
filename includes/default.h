@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/04 22:15:59 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 00:56:05 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 
 # define TOTAL_WIN_CHAR WIN_ROWS * WIN_COLS
 
+# define GAME_TICK 25000
+
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
 ** TYPEDEFS
@@ -55,6 +57,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <unistd.h>
+
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -84,10 +88,13 @@ WINDOW	*init_setup(void);
 ** FILE: assets.c
 */
 
-char	*spaceship_sprite();
+char	*spaceship_sprite(void);
 int		*spaceship_attributes(void);
 
 char	*enemy01_sprite(void);
 int		*enemy01_attributes(void);
+
+char	*bullet_sprite(void);
+int		*bullet_attribute(void);
 
 #endif

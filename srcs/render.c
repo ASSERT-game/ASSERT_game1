@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 21:23:26 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/04 21:43:07 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 00:46:06 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,48 +21,46 @@
 ** screen is being overwritten.
 */
 
-void	render_sprites(t_sprite *sprites, t_screen *screen)
+void	render_sprites(t_sprite sprite_frame, WINDOW *window)
 {
 	int	i;
-	int	j;
-	int	start_col;
-	int	start_row;
+	int	row;
+	int	col;
 
 	i = 0;
-	while (sprites[i].sprite != NULL)
+	row = sprite_frame.screen_y;
+	col = sprite_frame.screen_x;
+	while (sprite_frame.sprite[i] != '\0')
 	{
-		j = 0;
-		start_col = sprites[i].screen_x;
-		start_row = sprites[i].screen_y;
-		while (sprites[i].sprite[j] != '\0')
+		if (sprite_frame.sprite[i] == ' ')
+			col = col + 1;
+		else if (sprite_frame.sprite[i] == '\n')
 		{
-			if (sprites[i].sprite[j] == '\n')
-			{
-				sprites[i].screen_y = sprites[i].screen_y + 1;
-				sprites[i].screen_x = start_col;
-			}
-			else
-			{
-				if (sprites[i].sprite[j] != ' ')
-				{
-					wattron(screen->window, sprites[i].sprite_attribute[j]);
-					mvwaddch(screen->window, sprites[i].screen_y, sprites[i].screen_x, sprites[i].sprite[j]);
-					wattroff(screen->window, sprites[i].sprite_attribute[j]);
-				}
-				sprites[i].screen_x = sprites[i].screen_x + 1;
-			}
-			j++;
+			row = row + 1;
+			col = sprite_frame.screen_x;
 		}
-		sprites[i].screen_x = start_col;
-		sprites[i].screen_y = start_row;
+		else
+		{
+			wattron(window, sprite_frame.sprite_attribute[i]);
+			mvwaddch(window, row, col, sprite_frame.sprite[i]);
+			wattroff(window, sprite_frame.sprite_attribute[i]);
+			col = col + 1;
+		}
 		i++;
 	}
 }
 
 void	render(t_sprite *sprites, t_screen *screen)
 {
+	int	j;
+
 	werase(screen->window);
+	j = 0;
+	while (sprites[j].sprite != NULL)
+	{
+		render_sprites(sprites[j], screen->window);
+		j++;
+	}
 	box(screen->window, 0, 0);
-	render_sprites(sprites, screen);
 	wrefresh(screen->window);
 }

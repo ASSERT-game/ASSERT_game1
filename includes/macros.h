@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:10:47 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/04 21:54:47 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 00:55:12 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@
 		GET_USER_INPUT(type, scene);	\
 		UPDATE_STATE(scene);			\
 		RENDER(type, scene);			\
+		usleep(GAME_TICK);				\
 	}									\
 	CLEAN_UP(scene);					\
 	TRANSITION(scene);					\
 
-
+# define NULL_SPRITE (t_sprite){NULL, NULL, -1, -1};
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
 ** SCENES

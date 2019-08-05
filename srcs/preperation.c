@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 20:11:36 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/04 23:25:02 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 00:49:22 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ WINDOW	*init_setup(void)
 		curs_set(0);
 	}
 	window = newwin(GAME_ROWS + 2, GAME_COLS + 2, 0, 0);
-	// nodelay(window, true);
+	nodelay(window, true);
 
 	start_color();
 

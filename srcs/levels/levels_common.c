@@ -6,27 +6,32 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 07:54:24 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 11:45:18 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 15:04:07 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
-#include "level.h"
+#include "scene_normal_level.h"
 
 #define KEY_ITER 1
 
 int		break__of_normal_level(t_normal_level *level_cont)
 {
+	int result;
+
+	result = 1;
 	if (level_cont->player.x > GAME_COLS || level_cont->player.x < -1)
-		return (0);
+		result = 0;
 	if (level_cont->player.y > GAME_ROWS || level_cont->player.y < -1)
-		return (0);
-	if (level_cont->player.hitpoints == 0)
-		return (0);
+		result = 0;
+	if (level_cont->player.hitpoints <= ZERO_HP)
+		result = 0;
 	if (level_cont->exit_condition == 0)
-		return (0);
-	else
-		return (1);
+		result = 0;
+
+	if (result == 0)
+		level_cont->scenes.destination = EXIT_SCENE;
+	return (result);
 }
 
 void	keyupdate_of_player_on_normal_level(t_game_input *input, t_spaceship *spaceship, t_sprite *sprites)

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:10:47 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 22:19:07 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 13:06:57 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@
 # define NULL_SCENE -1
 # define TRANSITION_SCENE 0
 # define MAIN_MENU 1
-# define LEVEL_01 2
-# define LEVEL_02 3
+# define EXIT_SCENE 2
+# define LEVEL_01 3
+# define LEVEL_02 4
 
 #endif

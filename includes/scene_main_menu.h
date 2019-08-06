@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_menu.h                                        :+:      :+:    :+:   */
+/*   scene_main_menu.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 05:47:47 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 21:00:53 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 13:01:54 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_MENU_H
-# define MAIN_MENU_H
+#ifndef SCENE_MAIN_MENU_H
+# define SCENE_MAIN_MENU_H
 
 # include "default.h"
 

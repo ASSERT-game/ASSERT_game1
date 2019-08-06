@@ -6,12 +6,12 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 00:22:08 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 14:54:45 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
-#include "level.h"
+#include "scene_normal_level.h"
 
 #define SPRITE_COUNT_LEVEL_1 200
 
@@ -22,10 +22,13 @@ t_normal_level	*alloc__of_level_1(void)
 	result = malloc(sizeof(*result));
 	bzero(result, sizeof(*result));
 
-	result->exit_condition = 100000000;
+	result->exit_condition = 1;
+	result->score = 0;
 
 	result->screen = malloc(sizeof(*result->screen));
 	result->screen->window = init_setup();
+
+	result->name = "Level One";
 
 	result->sprites = malloc(sizeof(*(result->sprites)) * (SPRITE_COUNT_LEVEL_1));
 	bzero(result->sprites, sizeof(*(result->sprites)) * (SPRITE_COUNT_LEVEL_1));
@@ -41,28 +44,26 @@ t_normal_level	*alloc__of_level_1(void)
 	result->sprites[0].screen_x = result->player.x;
 	result->sprites[0].screen_y = result->player.y;
 
-	result->player.hitpoints = 1000;
+	result->player.hitpoints = 100;
 	result->sprites[1].sprite = hitpoints_sprite();
 	result->sprites[1].sprite_attribute = hitpoints_attribute();
 	result->sprites[1].screen_x = 5;
 	result->sprites[1].screen_y = 2;
 
-	result->sprites[2].sprite = enemy01_sprite();
-	result->sprites[2].sprite_attribute = enemy01_attributes();
-	result->sprites[2].screen_x = 20;
-	result->sprites[2].screen_y = 20;
+	// result->sprites[2].sprite = enemy01_sprite();
+	// result->sprites[2].sprite_attribute = enemy01_attributes();
+	// result->sprites[2].screen_x = 20;
+	// result->sprites[2].screen_y = 20;
 
-	result->sprites[3].sprite = enemy01_sprite();
-	result->sprites[3].sprite_attribute = enemy01_attributes();
-	result->sprites[3].screen_x = 30;
-	result->sprites[3].screen_y = 10;
+	// result->sprites[3].sprite = enemy01_sprite();
+	// result->sprites[3].sprite_attribute = enemy01_attributes();
+	// result->sprites[3].screen_x = 30;
+	// result->sprites[3].screen_y = 10;
 
-	result->sprites[4].sprite = enemy01_sprite();
-	result->sprites[4].sprite_attribute = enemy01_attributes();
-	result->sprites[4].screen_x = 50;
-	result->sprites[4].screen_y = 15;
-
-	result->sprites[5] = NULL_SPRITE;
+	// result->sprites[4].sprite = enemy01_sprite();
+	// result->sprites[4].sprite_attribute = enemy01_attributes();
+	// result->sprites[4].screen_x = 50;
+	// result->sprites[4].screen_y = 15;
 	return (result);
 }
 
@@ -73,11 +74,12 @@ void			update_of_level_1(t_normal_level *level_1_cont)
 	WINDOW *window;
 	window = level_1_cont->screen->window;
 	player = &(level_1_cont->sprites[0]);
+	werase(level_1_cont->screen->window);
 
 	keyupdate_of_player_on_normal_level(&level_1_cont->input, &level_1_cont->player, level_1_cont->sprites);
 	int hp = level_1_cont->player.hitpoints / 20;
 	memset(level_1_cont->sprites[1].sprite, '/', hp);
-	level_1_cont->sprites[1].sprite[hp - 1] = '\0';
+	level_1_cont->sprites[1].sprite[hp] = '\0';
 	level_1_cont->player.hitpoints = level_1_cont->player.hitpoints - 1;
 
 	level_1_cont->sprites[0].sprite = level_1_cont->player.sprites.sprite;

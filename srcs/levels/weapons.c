@@ -6,11 +6,12 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:02:12 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 00:07:00 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 12:57:25 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
+#include "scene_normal_level.h"
 
 /*
 ** Spawns two '>' bullets
@@ -87,4 +88,7 @@ void			use_special(t_spaceship *player)
 void		use_heal(t_spaceship *player)
 {
 	player->hitpoints = player->hitpoints + 100;
+	if (player->hitpoints > MAX_HP)
+		player->hitpoints = MAX_HP;
+
 }

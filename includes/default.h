@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 23:43:58 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 13:07:59 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@
 ** HEADERS
 */
 
-# include "colors.h"
 # include "macros.h"
 # include "game_structs.h"
 
@@ -67,6 +66,7 @@
 
 void	enter_main_menu(int *scene);
 void	enter_level_1(int *scene);
+void	enter_exit_scene(int *scene);
 
 void	transition(int from, int destination);
 

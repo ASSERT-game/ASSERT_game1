@@ -6,12 +6,12 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 23:07:16 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 12:56:53 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
-#include "main_menu.h"
+#include "scene_main_menu.h"
 
 int			break__of_main_menu(t_main_menu *main_menu_cont)
 {

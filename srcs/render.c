@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 21:23:26 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 00:18:58 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 12:44:22 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ void	render(t_sprite *sprites, t_screen *screen)
 {
 	int	j;
 
-	werase(screen->window);
-	werase(screen->window);
+	wclear(screen->window);
 	j = 0;
 	while (sprites[j].sprite != NULL)
 	{

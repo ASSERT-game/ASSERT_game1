@@ -4,6 +4,7 @@ NAME  = game1
 
 SRCS = \
 		srcs/assets/assets				\
+		srcs/exit/entry_exit			\
 		srcs/levels/level1				\
 		srcs/levels/levels_common		\
 		srcs/levels/weapons				\
@@ -38,8 +39,6 @@ quick:
 	@clear
 
 quicker:
-	@make fclean
-	@make all
-	@make clean
-	@clear
-	@./game1
+	@make quick
+	./$(NAME)
+

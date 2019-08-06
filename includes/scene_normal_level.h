@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   level.h                                            :+:      :+:    :+:   */
+/*   scene_normal_level.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 07:34:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 00:09:27 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 13:02:35 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEVEL_H
-# define LEVEL_H
+#ifndef SCENE_NORMAL_LEVEL_H
+# define SCENE_NORMAL_LEVEL_H
 
 # include "game_structs.h"
 
 typedef struct	s_normal_level
 {
+	char			*name;
 	struct
 	{
 		int at;
@@ -28,13 +29,29 @@ typedef struct	s_normal_level
 	t_char_map		map;
 	t_screen		*screen;
 
-	int exit_condition;
+	int				exit_condition;
+	int				score;
 
 	t_sprite			*sprites;
 
 	t_spaceship		player;
 
 }				t_normal_level;
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** MACROS
+*/
+
+/*
+** MAX HP is 100 but multiplied with 10 to have at least a precision of 1
+**
+** ZERO_HP is 9 because 10 is 1.0 HP. We can lower this to 5 or 0 to give players
+** last second chances!
+*/
+
+# define MAX_HP 1000
+# define ZERO_HP 9
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

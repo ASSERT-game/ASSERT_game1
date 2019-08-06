@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 21:29:40 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 11:19:10 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 16:16:39 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,24 @@ typedef	struct	s_spaceship
 	int				x;
 	int				y;
 }				t_spaceship;
+
+typedef char keymask;
+
+enum	e_keyFlags
+{
+    FLAG_MOVE_UP    = 0b000001,
+    FLAG_MOVE_DOWN  = 0b000010,
+    FLAG_MOVE_LEFT  = 0b000100,
+    FLAG_MOVE_RIGHT = 0b001000,
+	FLAG_FIRE       = 0b010000,
+	FLAG_SPECIAL    = 0b100000,
+    FLAG_NULL       = 0b000000
+};
+
+
+typedef struct s_game_input
+{
+	keymask		keys_pressed;
+}				t_game_input;
 
 #endif

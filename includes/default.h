@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 11:27:46 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 22:15:39 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@
 */
 
 void	enter_main_menu(int *scene);
+void	enter_level_1(int *scene);
 
 void	transition(int from, int destination);
 
@@ -102,5 +103,10 @@ int		*bullet01_attribute(void);
 
 char	*bullet02_sprite(void);
 int		*bullet02_attribute(void);
+
+/*
+** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
+** FILE: guns.c
+*/
 
 #endif

@@ -36,3 +36,10 @@ quick:
 	@make all
 	@make clean
 	@clear
+
+quicker:
+	@make fclean
+	@make all
+	@make clean
+	@clear
+	@./game1

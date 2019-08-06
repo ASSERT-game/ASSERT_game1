@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 22:15:39 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 23:43:58 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ int		*bullet01_attribute(void);
 
 char	*bullet02_sprite(void);
 int		*bullet02_attribute(void);
+
+char	*main_menu_sprite(void);
+int		*main_menu_attribute(void);
+
+char	*hitpoints_sprite(void);
+int		*hitpoints_attribute(void);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

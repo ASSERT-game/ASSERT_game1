@@ -6,17 +6,23 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 07:54:24 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 19:21:47 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 11:45:18 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
 #include "level.h"
 
-#define KEY_ITER 20
+#define KEY_ITER 1
 
 int		break__of_normal_level(t_normal_level *level_cont)
 {
+	if (level_cont->player.x > GAME_COLS || level_cont->player.x < -1)
+		return (0);
+	if (level_cont->player.y > GAME_ROWS || level_cont->player.y < -1)
+		return (0);
+	if (level_cont->player.hitpoints == 0)
+		return (0);
 	if (level_cont->exit_condition == 0)
 		return (0);
 	else
@@ -37,6 +43,8 @@ void	keyupdate_of_player_on_normal_level(t_game_input *input, t_spaceship *space
 		spaceship->bullet.spawn(sprites, spaceship->y, spaceship->x);
 	if (input->keys_pressed & FLAG_SPECIAL)
 		use_special(spaceship);
+	if (input->keys_pressed & FLAG_HEAL)
+		use_heal(spaceship);
 }
 
 void	listen_of_normal_level(WINDOW *window, t_game_input *input)
@@ -61,6 +69,8 @@ void	listen_of_normal_level(WINDOW *window, t_game_input *input)
 			input->keys_pressed = input->keys_pressed | FLAG_FIRE;
 		if (in_char == 't')
 			input->keys_pressed = input->keys_pressed | FLAG_SPECIAL;
+		if (in_char == 'h')
+			input->keys_pressed = input->keys_pressed | FLAG_HEAL;
 		j++;
 	}
 	return ;

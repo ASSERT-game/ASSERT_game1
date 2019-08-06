@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 22:00:55 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 10:50:56 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 00:00:47 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,3 +170,97 @@ int		*bullet02_attribute(void)
 	bullet_attribute[0] = COLOR_PAIR(4) | A_BOLD;
 	return (bullet_attribute);
 }
+
+char	*main_menu_sprite(void)
+{
+	static char	*main_menu_sprite;
+
+	if (main_menu_sprite != 0)
+		return (main_menu_sprite);
+	main_menu_sprite = "  ___________________  _____  _________ ___________\n /   _____/\\______   \\/  _  \\ \\_   ___ \\_   _____/\n \\_____  \\  |     ___/  /_\\  \\/    \\  \\/ |    __)_ \n /        \\ |    |  /    |    \\     \\____|        \\\n/_______  / |____|  \\____|__  /\\______  /_______  /\n        \\/                  \\/        \\/        \\/ \n                            _____ ________         \n                           /  |  |\\_____  \\        \n                          /   |  |_/  ____/        \n                         /    ^   /       \\        \n                         \\____   |\\_______ \\       \n                              |__|        \\/       ";
+	return (main_menu_sprite);
+}
+
+int		*main_menu_attribute(void)
+{
+	static int	*main_menu_attribute;
+
+	if (main_menu_attribute != 0)
+		return (main_menu_attribute);
+	main_menu_attribute = malloc(sizeof(*main_menu_attribute) * (578));
+	bzero(main_menu_attribute, sizeof(*main_menu_attribute) * (578));
+	return (main_menu_attribute);
+}
+
+char	*hitpoints_sprite(void)
+{
+	static char	*hitpoints_sprite;
+
+	if (hitpoints_sprite != 0)
+		return (hitpoints_sprite);
+	hitpoints_sprite = strdup("//////////////////////////////////////////////////");
+	return (hitpoints_sprite);
+}
+
+int		*hitpoints_attribute(void)
+{
+	static int	*hitpoints_attribute;
+
+	if (hitpoints_attribute != 0)
+		return (hitpoints_attribute);
+	hitpoints_attribute = malloc(sizeof(*hitpoints_attribute) * (51));
+	hitpoints_attribute[0] = COLOR_PAIR(4);
+	hitpoints_attribute[1] = COLOR_PAIR(4);
+	hitpoints_attribute[2] = COLOR_PAIR(4);
+	hitpoints_attribute[3] = COLOR_PAIR(4);
+	hitpoints_attribute[4] = COLOR_PAIR(4) | A_BOLD;
+	hitpoints_attribute[5] = COLOR_PAIR(4) | A_BOLD;
+	hitpoints_attribute[6] = COLOR_PAIR(4) | A_BOLD;
+	hitpoints_attribute[7] = COLOR_PAIR(4) | A_BOLD;
+	hitpoints_attribute[8] = COLOR_PAIR(4) | A_BOLD;
+	hitpoints_attribute[9] = COLOR_PAIR(4) | A_BOLD;
+	hitpoints_attribute[10] = COLOR_PAIR(13) | A_BOLD;
+	hitpoints_attribute[11] = COLOR_PAIR(13) | A_BOLD;
+	hitpoints_attribute[12] = COLOR_PAIR(13) | A_BOLD;
+	hitpoints_attribute[13] = COLOR_PAIR(13) | A_BOLD;
+	hitpoints_attribute[14] = COLOR_PAIR(13) | A_BOLD;
+	hitpoints_attribute[15] = COLOR_PAIR(14) | A_BOLD;
+	hitpoints_attribute[16] = COLOR_PAIR(14) | A_BOLD;
+	hitpoints_attribute[17] = COLOR_PAIR(14) | A_BOLD;
+	hitpoints_attribute[18] = COLOR_PAIR(14) | A_BOLD;
+	hitpoints_attribute[19] = COLOR_PAIR(14) | A_BOLD;
+	hitpoints_attribute[20] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[21] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[22] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[23] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[24] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[25] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[26] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[27] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[28] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[29] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[30] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[31] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[32] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[33] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[34] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[35] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[36] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[37] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[38] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[39] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[40] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[41] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[42] = COLOR_PAIR(15) | A_BOLD;
+	hitpoints_attribute[43] = COLOR_PAIR(6) | A_BOLD;
+	hitpoints_attribute[44] = COLOR_PAIR(6) | A_BOLD;
+	hitpoints_attribute[45] = COLOR_PAIR(6) | A_BOLD;
+	hitpoints_attribute[46] = COLOR_PAIR(6) | A_BOLD;
+	hitpoints_attribute[47] = COLOR_PAIR(6) | A_BOLD;
+	hitpoints_attribute[48] = COLOR_PAIR(6) | A_BOLD;
+	hitpoints_attribute[49] = COLOR_PAIR(6) | A_BOLD;
+	hitpoints_attribute[50] = COLOR_PAIR(6) | A_BOLD;
+
+	return (hitpoints_attribute);
+}
+

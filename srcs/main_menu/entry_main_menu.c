@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 22:21:47 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 23:07:16 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ t_main_menu	*alloc__of_main_menu(void)
 
 	result->sprites = malloc(sizeof(*(result->sprites)) * (100));
 	bzero(result->sprites, sizeof(*(result->sprites)) * (100));
+
+	result->sprites[0].sprite = main_menu_sprite();
+	result->sprites[0].sprite_attribute = main_menu_attribute();
+	result->sprites[0].screen_x = 1;
+	result->sprites[0].screen_y = 1;
+
+	result->sprites[1] = NULL_SPRITE;
 
 	result->screen = malloc(sizeof(*result->screen));
 	result->screen->window = init_setup();

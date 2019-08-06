@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 07:34:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 19:13:09 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 00:09:27 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void			clean_up_empty_sprites(t_sprite *sprites);
 void			spawn_bullet01(t_sprite *sprites, int row, int col);
 void			spawn_bullet02(t_sprite *sprites, int row, int col);
 void			use_special(t_spaceship *player);
+void			use_heal(t_spaceship *player);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 20:11:36 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 21:51:58 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/05 23:41:51 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,12 @@ WINDOW	*init_setup(void)
 {
 	WINDOW *window;
 
-	if (initscr() == OK)
-	{
-		cbreak();
-		noecho();
-		start_color();
-		curs_set(0);
-	}
+	initscr();
 	window = newwin(GAME_ROWS + 2, GAME_COLS + 2, 0, 0);
+	cbreak();
+	noecho();
+	curs_set(0);
+	start_color();
 	nodelay(window, true);
 
 	start_color();
@@ -40,6 +38,7 @@ WINDOW	*init_setup(void)
 	init_pair(12, 91, COLOR_BLACK);
 	init_pair(13, 77, COLOR_BLACK);
 	init_pair(14, 78, COLOR_BLACK);
+	init_pair(15, COLOR_GREEN, COLOR_BLACK);
 
 	box(window, 0, 0);
 	wrefresh(window);

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/05 19:02:12 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 12:57:25 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 00:42:05 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,46 @@
 #include "scene_normal_level.h"
 
 /*
-** Spawns two '>' bullets
+** Fires two '>' bullets
 */
 
-void			spawn_bullet01(t_sprite *sprites, int row, int col)
+void		fire_bullet01(t_pawn *entities, int row, int col)
 {
 	int i;
 
 	i = 0;
-	while (sprites[i].sprite != NULL)
+	while (entities[i].type_entity.sprites.sprite != NULL)
 		i++;
-	sprites[i].sprite = bullet01_sprite();
-	sprites[i].sprite_attribute = bullet01_attribute();
-	sprites[i].screen_x = col + 2;
-	sprites[i].screen_y = row;
-	while (sprites[i].sprite != NULL)
+	entities[i].type_bullet = spawn_bullet01();
+	entities[i].type_entity.x = col + 2;
+	entities[i].type_entity.y = row;
+	while (entities[i].type_entity.sprites.sprite  != NULL)
 		i++;
-	sprites[i].sprite = bullet01_sprite();
-	sprites[i].sprite_attribute = bullet01_attribute();
-	sprites[i].screen_x = col + 2;
-	sprites[i].screen_y = row + 4;
+	entities[i].type_bullet = spawn_bullet01();
+	entities[i].type_entity.x = col + 2;
+	entities[i].type_entity.y = row + 4;
 	return ;
 }
 
 /*
-** Spawns two '*' bullets
+** Fires two '*' bullets
 */
 
-void			spawn_bullet02(t_sprite *sprites, int row, int col)
+void		fire_bullet02(t_pawn *entities, int row, int col)
 {
 	int i;
 
 	i = 0;
-	while (sprites[i].sprite != NULL)
+	while (entities[i].type_entity.sprites.sprite != NULL)
 		i++;
-	sprites[i].sprite = bullet02_sprite();
-	sprites[i].sprite_attribute = bullet02_attribute();
-	sprites[i].screen_x = col + 3;
-	sprites[i].screen_y = row + 1;
-	while (sprites[i].sprite != NULL)
+	entities[i].type_bullet = spawn_bullet02();
+	entities[i].type_entity.x = col + 3;
+	entities[i].type_entity.y = row + 1;
+	while (entities[i].type_entity.sprites.sprite  != NULL)
 		i++;
-	sprites[i].sprite = bullet02_sprite();
-	sprites[i].sprite_attribute = bullet02_attribute();
-	sprites[i].screen_x = col + 3;
-	sprites[i].screen_y = row + 3;
+	entities[i].type_bullet = spawn_bullet02();
+	entities[i].type_entity.x = col + 3;
+	entities[i].type_entity.y = row + 3;
 	return ;
 }
 
@@ -65,19 +61,19 @@ void			spawn_bullet02(t_sprite *sprites, int row, int col)
 ** Changed the ship type and the types of bullets spawned
 */
 
-void			use_special(t_spaceship *player)
+void		use_special(t_spaceship *player)
 {
-	if (player->sprites.sprite == spaceship01_sprite())
+	if (player->e.sprites.sprite == spaceship01_sprite())
 	{
-		player->sprites.sprite = spaceship02_sprite();
-		player->sprites.sprite_attribute = spaceship02_attributes();
-		player->bullet.spawn = spawn_bullet02;
+		player->e.sprites.sprite = spaceship02_sprite();
+		player->e.sprites.sprite_attribute = spaceship02_attributes();
+		player->class.bullet.spawn = fire_bullet02;
 	}
 	else
 	{
-		player->sprites.sprite = spaceship01_sprite();
-		player->sprites.sprite_attribute = spaceship01_attributes();
-		player->bullet.spawn = spawn_bullet01;
+		player->class.e.sprites.sprite = spaceship01_sprite();
+		player->e.sprites.sprite_attribute = spaceship01_attributes();
+		player->class.bullet.spawn = fire_bullet01;
 	}
 }
 
@@ -87,8 +83,7 @@ void			use_special(t_spaceship *player)
 
 void		use_heal(t_spaceship *player)
 {
-	player->hitpoints = player->hitpoints + 100;
-	if (player->hitpoints > MAX_HP)
-		player->hitpoints = MAX_HP;
-
+	player->class.hitpoints = player->class.hitpoints + 100;
+	if (player->class.hitpoints > MAX_HP)
+		player->class.hitpoints = MAX_HP;
 }

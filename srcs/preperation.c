@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 20:11:36 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/05 23:41:51 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/06 23:12:38 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ WINDOW	*init_setup(void)
 
 	start_color();
 
-	// if (can_change_color() == TRUE)
-	// 	exit(1);
 	init_color(91, 800, 400, 1000);		//PURPLE
 	init_color(77, 800, 400, 100);		//ORANGE
 	init_color(78, 980, 784, 196);		//ORANGE2

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 13:07:59 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 02:22:26 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 ** DEFAULT MACROS
 */
 
-# define GAME_ROWS (25)
-# define GAME_COLS (80)
+# define GAME_ROWS (60)
+# define GAME_COLS (200)
 
 # define TOP_WINDOW_CLIP (2)
 # define SIDE_WINDOW_CLIP (2)
@@ -50,12 +50,14 @@
 
 # include "macros.h"
 # include "game_structs.h"
+# include "entity.h"
 
 # include <ncurses.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <time.h>
 # include <unistd.h>
 
 
@@ -96,7 +98,7 @@ char	*spaceship02_sprite(void);
 int		*spaceship02_attributes(void);
 
 char	*enemy01_sprite(void);
-int		*enemy01_attributes(void);
+int		*enemy01_attribute(void);
 
 char	*bullet01_sprite(void);
 int		*bullet01_attribute(void);

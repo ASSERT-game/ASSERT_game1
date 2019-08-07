@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 22:00:55 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 00:00:47 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 01:21:37 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ char	*enemy01_sprite(void)
 	return (enemy01_char_sprite);
 }
 
-int		*enemy01_attributes(void)
+int		*enemy01_attribute(void)
 {
 	static int	*enemy01_attribute;
 

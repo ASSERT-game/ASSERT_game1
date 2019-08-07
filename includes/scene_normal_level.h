@@ -6,14 +6,14 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 07:34:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 13:02:35 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 01:56:57 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_NORMAL_LEVEL_H
 # define SCENE_NORMAL_LEVEL_H
 
-# include "game_structs.h"
+# include "default.h"
 
 typedef struct	s_normal_level
 {
@@ -30,9 +30,12 @@ typedef struct	s_normal_level
 	t_screen		*screen;
 
 	int				exit_condition;
+	int				game_tick;
 	int				score;
 
 	t_sprite			*sprites;
+	t_pawn				*entities;
+
 
 	t_spaceship		player;
 
@@ -60,16 +63,23 @@ typedef struct	s_normal_level
 
 int				break__of_normal_level(t_normal_level *level_1_cont);
 void			listen_of_normal_level(WINDOW *window, t_game_input *input);
-void			keyupdate_of_player_on_normal_level(t_game_input *input, t_spaceship *spaceship, t_sprite *sprites);
-void			clean_up_empty_sprites(t_sprite *sprites);
+void			clean_up_empty_sprites(t_pawn *entities, t_sprite *sprites);
 
+t_spaceship		spawn_player(int no);
+
+t_bullet		spawn_bullet01(void);
+t_bullet		spawn_bullet02(void);
+
+t_enemy01		spawn_enemy01(void);
+
+int				rand_min_max(int min, int max);
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
 ** FILE: weapons.c
 */
 
-void			spawn_bullet01(t_sprite *sprites, int row, int col);
-void			spawn_bullet02(t_sprite *sprites, int row, int col);
+void			fire_bullet01(t_pawn *sprites, int row, int col);
+void			fire_bullet02(t_pawn *sprites, int row, int col);
 void			use_special(t_spaceship *player);
 void			use_heal(t_spaceship *player);
 

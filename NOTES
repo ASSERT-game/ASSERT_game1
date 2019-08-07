@@ -7,4 +7,4 @@
 
 
 
-gcc level1.c levels_common.c ../render.c ../transition/transition.c ../preperation.c ../assets/assets.c -I../../includes -lncurses
+gcc -I../../includes -lncurses level1.c levels_common.c ../render.c ../transition/transition.c ../preperation.c ../assets/assets.c

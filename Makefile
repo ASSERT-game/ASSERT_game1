@@ -1,6 +1,6 @@
 FLAGS = -Wall -Wextra -Werror -lncurses
 INCLUDES = -I includes/
-NAME  = game1
+NAME  = beta_game1
 
 SRCS = \
 		srcs/assets/assets				\

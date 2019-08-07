@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 14:54:45 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 02:00:58 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_normal_level	*alloc__of_level_1(void)
 	bzero(result, sizeof(*result));
 
 	result->exit_condition = 1;
+	result->game_tick = 0;
 	result->score = 0;
 
 	result->screen = malloc(sizeof(*result->screen));
@@ -33,82 +34,54 @@ t_normal_level	*alloc__of_level_1(void)
 	result->sprites = malloc(sizeof(*(result->sprites)) * (SPRITE_COUNT_LEVEL_1));
 	bzero(result->sprites, sizeof(*(result->sprites)) * (SPRITE_COUNT_LEVEL_1));
 
-	result->player.sprites.sprite = spaceship02_sprite();
-	result->player.sprites.sprite_attribute = spaceship02_attributes();
-	result->player.bullet.spawn = spawn_bullet02;
-	result->player.x = 5;
-	result->player.y = 5;
+	result->entities = malloc(sizeof(*(result->entities)) * (SPRITE_COUNT_LEVEL_1));
+	bzero(result->entities, sizeof(*(result->entities)) * (SPRITE_COUNT_LEVEL_1));
 
-	result->sprites[0].sprite = result->player.sprites.sprite;
-	result->sprites[0].sprite_attribute = result->player.sprites.sprite_attribute;
-	result->sprites[0].screen_x = result->player.x;
-	result->sprites[0].screen_y = result->player.y;
+	result->entities[0].type_spaceship = spawn_player(1);
+	result->player = result->entities[0].type_spaceship;
 
-	result->player.hitpoints = 100;
-	result->sprites[1].sprite = hitpoints_sprite();
-	result->sprites[1].sprite_attribute = hitpoints_attribute();
-	result->sprites[1].screen_x = 5;
-	result->sprites[1].screen_y = 2;
-
-	// result->sprites[2].sprite = enemy01_sprite();
-	// result->sprites[2].sprite_attribute = enemy01_attributes();
-	// result->sprites[2].screen_x = 20;
-	// result->sprites[2].screen_y = 20;
-
-	// result->sprites[3].sprite = enemy01_sprite();
-	// result->sprites[3].sprite_attribute = enemy01_attributes();
-	// result->sprites[3].screen_x = 30;
-	// result->sprites[3].screen_y = 10;
-
-	// result->sprites[4].sprite = enemy01_sprite();
-	// result->sprites[4].sprite_attribute = enemy01_attributes();
-	// result->sprites[4].screen_x = 50;
-	// result->sprites[4].screen_y = 15;
 	return (result);
 }
 
 void			update_of_level_1(t_normal_level *level_1_cont)
 {
-	t_sprite	*player;
+	int	i;
 
-	WINDOW *window;
-	window = level_1_cont->screen->window;
-	player = &(level_1_cont->sprites[0]);
-	werase(level_1_cont->screen->window);
-
-	keyupdate_of_player_on_normal_level(&level_1_cont->input, &level_1_cont->player, level_1_cont->sprites);
-	int hp = level_1_cont->player.hitpoints / 20;
-	memset(level_1_cont->sprites[1].sprite, '/', hp);
-	level_1_cont->sprites[1].sprite[hp] = '\0';
-	level_1_cont->player.hitpoints = level_1_cont->player.hitpoints - 1;
-
-	level_1_cont->sprites[0].sprite = level_1_cont->player.sprites.sprite;
-	level_1_cont->sprites[0].sprite_attribute = level_1_cont->player.sprites.sprite_attribute;
-	level_1_cont->sprites[0].screen_x = level_1_cont->player.x;
-	level_1_cont->sprites[0].screen_y = level_1_cont->player.y;
-
-	level_1_cont->sprites[1].screen_x = level_1_cont->player.x;
-	level_1_cont->sprites[1].screen_y = level_1_cont->player.y - 2;
-
-	int j = 0;
-	while (level_1_cont->sprites[j].sprite != NULL)
+	i = 0;
+	bzero(level_1_cont->sprites, sizeof(*(level_1_cont->sprites)) * (SPRITE_COUNT_LEVEL_1));
+	while (level_1_cont->entities[i].type_entity.sprites.sprite != NULL)
 	{
-		if (level_1_cont->sprites[j].sprite[0] == '>' || level_1_cont->sprites[j].sprite[0] == '*')
-		{
-			level_1_cont->sprites[j].screen_x = level_1_cont->sprites[j].screen_x + 1;
-			if (level_1_cont->sprites[j].screen_x > GAME_COLS)
-				level_1_cont->sprites[j] = EMPTY_SPRITE;
-		}
-		else if (level_1_cont->sprites[j].sprite[0] == '*')
-		{
-			level_1_cont->sprites[j].screen_x = level_1_cont->sprites[j].screen_x + 1;
-			if (level_1_cont->sprites[j].screen_x > GAME_COLS - 40)
-				level_1_cont->sprites[j] = EMPTY_SPRITE;
-		}
-		j++;
+		level_1_cont->entities[i].type_entity.update(&level_1_cont->entities[i], level_1_cont);
+		level_1_cont->sprites[i] = level_1_cont->entities[i].type_entity.sprites;
+		level_1_cont->sprites[i].screen_x = level_1_cont->entities[i].type_entity.x;
+		level_1_cont->sprites[i].screen_y = level_1_cont->entities[i].type_entity.y;
+		i++;
+	}
+	if (level_1_cont->game_tick % 7 == 0 && rand_min_max(0, 5) == 1)
+	{
+		level_1_cont->entities[i].type_enemy01 = spawn_enemy01();
+		level_1_cont->sprites[i] = level_1_cont->entities[i].type_entity.sprites;
+		level_1_cont->sprites[i].screen_x = level_1_cont->entities[i].type_entity.x;
+		level_1_cont->sprites[i].screen_y = level_1_cont->entities[i].type_entity.y;
 	}
 
-	clean_up_empty_sprites(level_1_cont->sprites);
+	clean_up_empty_sprites(level_1_cont->entities, level_1_cont->sprites);
+
+	i = 0;
+	while (level_1_cont->entities[i].type_entity.sprites.sprite != NULL)
+		i++;
+
+	int hp = (level_1_cont->entities[0].type_spaceship.class.hitpoints) / 20;
+	level_1_cont->sprites[i].sprite = hitpoints_sprite();
+	level_1_cont->sprites[i].sprite_attribute = hitpoints_attribute();
+	memset(level_1_cont->sprites[i].sprite, '/', hp);
+	level_1_cont->sprites[i].sprite[hp] = '\0';
+	level_1_cont->sprites[i].screen_x = level_1_cont->entities[0].type_entity.x;
+	level_1_cont->sprites[i].screen_y = level_1_cont->entities[0].type_entity.y - 2;
+
+	level_1_cont->sprites[i + 1] = NULL_SPRITE;
+
+	level_1_cont->game_tick = level_1_cont->game_tick + 1;
 }
 
 void			clean__of_level_1(t_normal_level *level_1_cont)
@@ -122,4 +95,3 @@ void			enter_level_1(int *scene)
 	SCENE_LOOP(normal_level, level_1);
 	(void)scene;
 }
-

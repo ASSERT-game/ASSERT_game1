@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 02:22:26 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 16:32:18 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
-** DEFAULT MACROS
+** GAME CONSTANTS
 */
 
-# define GAME_ROWS (60)
-# define GAME_COLS (200)
+# define GAME_ROWS (50)
+# define GAME_COLS (160)
 
 # define TOP_WINDOW_CLIP (2)
 # define SIDE_WINDOW_CLIP (2)
@@ -29,19 +29,9 @@
 
 # define VIEW_OFFSET (WIN_COLS * (TOP_WINDOW_CLIP) + SIDE_WINDOW_CLIP)
 
-# define TO_STRING(val) #val
-
-# define MIN_LINES(val) TO_STRING(val)
-
 # define TOTAL_WIN_CHAR WIN_ROWS * WIN_COLS
 
 # define GAME_TICK 25000
-
-/*
-** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
-** TYPEDEFS
-*/
-
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-
@@ -111,6 +101,9 @@ int		*main_menu_attribute(void);
 
 char	*hitpoints_sprite(void);
 int		*hitpoints_attribute(void);
+
+char	*enemy02_sprite(void);
+int		*enemy02_attribute(void);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

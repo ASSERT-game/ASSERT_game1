@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 22:00:55 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 01:21:37 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 16:31:58 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		*spaceship01_attributes(void)
 	spaceship_attribute[16] = COLOR_PAIR(0);
 	spaceship_attribute[17] = COLOR_PAIR(6) | A_BOLD;
 	spaceship_attribute[18] = COLOR_PAIR(0);
-	spaceship_attribute[19] = COLOR_PAIR(0);
 	return (spaceship_attribute);
 }
 
@@ -86,10 +85,8 @@ int		*spaceship02_attributes(void)
 	spaceship_attribute[12] = COLOR_PAIR(14);
 	spaceship_attribute[13] = COLOR_PAIR(0);
 	spaceship_attribute[14] = COLOR_PAIR(13);
-	spaceship_attribute[15] = COLOR_PAIR(0);
 	return (spaceship_attribute);
 }
-
 
 char	*enemy01_sprite(void)
 {
@@ -125,6 +122,36 @@ int		*enemy01_attribute(void)
 	enemy01_attribute[13] = COLOR_PAIR(4);
 	enemy01_attribute[14] = COLOR_PAIR(0);
 	return (enemy01_attribute);
+}
+
+char	*enemy02_sprite(void)
+{
+	static char *enemy02_char_sprite;
+
+	if (enemy02_char_sprite != 0)
+		return (enemy02_char_sprite);
+	else
+		enemy02_char_sprite = " *\n*o*\n *";
+	return (enemy02_char_sprite);
+}
+
+int		*enemy02_attribute(void)
+{
+	static int	*enemy02_attribute;
+
+	if (enemy02_attribute != 0)
+		return (enemy02_attribute);
+	enemy02_attribute = malloc(sizeof(*enemy02_attribute) * (9));
+	enemy02_attribute[0] = COLOR_PAIR(0);
+	enemy02_attribute[1] = COLOR_PAIR(13);
+	enemy02_attribute[2] = COLOR_PAIR(0);
+	enemy02_attribute[3] = COLOR_PAIR(13);
+	enemy02_attribute[4] = COLOR_PAIR(4);
+	enemy02_attribute[5] = COLOR_PAIR(13);
+	enemy02_attribute[6] = COLOR_PAIR(0);
+	enemy02_attribute[7] = COLOR_PAIR(0);
+	enemy02_attribute[8] = COLOR_PAIR(13);
+	return (enemy02_attribute);
 }
 
 char	*bullet01_sprite(void)
@@ -184,11 +211,18 @@ char	*main_menu_sprite(void)
 int		*main_menu_attribute(void)
 {
 	static int	*main_menu_attribute;
+	int			j;
 
 	if (main_menu_attribute != 0)
 		return (main_menu_attribute);
-	main_menu_attribute = malloc(sizeof(*main_menu_attribute) * (578));
-	bzero(main_menu_attribute, sizeof(*main_menu_attribute) * (578));
+	main_menu_attribute = malloc(sizeof(*main_menu_attribute) * (623));
+	bzero(main_menu_attribute, sizeof(*main_menu_attribute) * (623));
+	j = 0;
+	while (j < 623)
+	{
+		main_menu_attribute[j] = COLOR_PAIR(6) | A_BOLD;
+		j++;
+	}
 	return (main_menu_attribute);
 }
 

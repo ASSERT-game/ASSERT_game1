@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 20:43:10 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 00:21:53 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 15:22:23 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,21 @@ typedef	union	s_enemy01
 	}				class;
 }			t_enemy01;
 
+typedef	union	s_enemy02
+{
+	t_entity		e;
+	struct
+	{
+		t_entity	e;
+		int			hitpoints;
+	}				class;
+}			t_enemy02;
 
 typedef union s_pawn
 {
 	t_entity	type_entity;
 	t_enemy01	type_enemy01;
+	t_enemy02	type_enemy02;
 	t_spaceship	type_spaceship;
 	t_bullet	type_bullet;
 }				t_pawn;

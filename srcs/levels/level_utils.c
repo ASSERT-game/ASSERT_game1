@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   entry.c                                            :+:      :+:    :+:   */
+/*   level_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/02 04:02:00 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 16:28:45 by kmira            ###   ########.fr       */
+/*   Created: 2019/08/07 15:41:32 by kmira             #+#    #+#             */
+/*   Updated: 2019/08/07 15:52:48 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "default.h"
+#include <stdlib.h>
+#include <time.h>
 
-int		main(void)
+int			rand_min_max(int min, int max)
 {
-	transition(-1, MAIN_MENU);
-	return (0);
+	int a;
+
+	if (min >= max)
+		return (0);
+	a = (rand() % (max + 1 - min)) + min;
+	return (a);
 }

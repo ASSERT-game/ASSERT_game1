@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 21:29:40 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/06 22:24:32 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 16:04:38 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 
 typedef struct	s_char_map
 {
-	char	*line;
-	char	frame[WIN_ROWS * WIN_COLS + 1];
+	char		*line;
+	char		frame[WIN_ROWS * WIN_COLS + 1];
 
 }				t_char_map;
 
 typedef struct	s_screen
 {
-	WINDOW	*window;
+	WINDOW		*window;
 }				t_screen;
 
 typedef struct	s_sprite
@@ -35,9 +35,9 @@ typedef struct	s_sprite
 	int			screen_y;
 }				t_sprite;
 
-typedef char keymask;
+typedef char	t_keymask;
 
-enum	e_keyFlags
+enum			e_keyflags
 {
     FLAG_MOVE_UP    = 0b0000001,
     FLAG_MOVE_DOWN  = 0b0000010,
@@ -49,10 +49,9 @@ enum	e_keyFlags
     FLAG_NULL       = 0b0000000
 };
 
-
-typedef struct s_game_input
+typedef struct	s_game_input
 {
-	keymask		keys_pressed;
+	t_keymask		keys_pressed;
 }				t_game_input;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 02:00:58 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/07 15:37:43 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,15 @@ void			update_of_level_1(t_normal_level *level_1_cont)
 		level_1_cont->sprites[i] = level_1_cont->entities[i].type_entity.sprites;
 		level_1_cont->sprites[i].screen_x = level_1_cont->entities[i].type_entity.x;
 		level_1_cont->sprites[i].screen_y = level_1_cont->entities[i].type_entity.y;
+		i++;
+	}
+	if (level_1_cont->game_tick % 75 == 0)
+	{
+		level_1_cont->entities[i].type_enemy02 = spawn_enemy02();
+		level_1_cont->sprites[i] = level_1_cont->entities[i].type_entity.sprites;
+		level_1_cont->sprites[i].screen_x = level_1_cont->entities[i].type_entity.x;
+		level_1_cont->sprites[i].screen_y = level_1_cont->entities[i].type_entity.y;
+		i++;
 	}
 
 	clean_up_empty_sprites(level_1_cont->entities, level_1_cont->sprites);

@@ -6,6 +6,9 @@ SRCS = \
 		srcs/assets/assets				\
 		srcs/exit/entry_exit			\
 		srcs/levels/level1				\
+		srcs/levels/level_entity_update	\
+		srcs/levels/level_spawners		\
+		srcs/levels/level_utils			\
 		srcs/levels/levels_common		\
 		srcs/levels/weapons				\
 		srcs/main_menu/entry_main_menu	\

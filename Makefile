@@ -3,19 +3,21 @@ INCLUDES = -I includes/
 NAME  = beta_game1
 
 SRCS = \
-		srcs/assets/assets				\
-		srcs/exit/entry_exit			\
-		srcs/levels/level1				\
-		srcs/levels/level_entity_update	\
-		srcs/levels/level_spawners		\
-		srcs/levels/level_utils			\
-		srcs/levels/levels_common		\
-		srcs/levels/weapons				\
-		srcs/main_menu/entry_main_menu	\
-		srcs/transition/transition		\
-		srcs/entry						\
-		srcs/preperation				\
-		srcs/render						\
+		srcs/assets/assets					\
+		srcs/entities/enemy_01_projectile	\
+		srcs/entities/enemy_01				\
+		srcs/entities/enemy_02				\
+		srcs/entities/spaceship_projectile	\
+		srcs/entities/spaceship				\
+		srcs/exit/entry_exit				\
+		srcs/levels/level1					\
+		srcs/levels/level_utils				\
+		srcs/levels/levels_common			\
+		srcs/main_menu/entry_main_menu		\
+		srcs/transition/transition			\
+		srcs/entry							\
+		srcs/preperation					\
+		srcs/render							\
 
 
 FILES = $(addsuffix .c, $(SRCS))
@@ -45,3 +47,5 @@ quicker:
 	@make quick
 	./$(NAME)
 
+		# srcs/levels/level_spawners			\
+		# srcs/levels/level_entity_update		\

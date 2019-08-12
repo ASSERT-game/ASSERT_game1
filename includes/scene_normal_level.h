@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 07:34:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 16:20:10 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/12 16:21:38 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ t_enemy02			spawn_enemy02(void);
 t_spaceship			spawn_player(int no);
 t_bullet			spawn_bullet01(void);
 t_bullet			spawn_bullet02(void);
+t_bullet			spawn_enemy_bullet(void);
 t_enemy01			spawn_enemy01(void);
 t_enemy02			spawn_enemy02(void);
 
@@ -92,6 +93,7 @@ void				player_step(t_pawn *pawn, t_normal_level *level_cont);
 void				bullet_step(t_pawn *pawn, t_normal_level *level_cont);
 void				enemy01_step(t_pawn *pawn, t_normal_level *level_cont);
 void				enemy02_step(t_pawn *pawn, t_normal_level *level_cont);
+void				enemy_bullet_step(t_pawn *pawn, t_normal_level *level_cont);
 
 /*
 ** -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-  -_---_-_-

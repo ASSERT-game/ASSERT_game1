@@ -6,14 +6,14 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 15:37:43 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/10 19:37:44 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
 #include "scene_normal_level.h"
 
-#define SPRITE_COUNT_LEVEL_1 200
+#define SPRITE_COUNT_LEVEL_1 500
 
 t_normal_level	*alloc__of_level_1(void)
 {

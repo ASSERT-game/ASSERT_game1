@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   level1.c                                           :+:      :+:    :+:   */
+/*   level_01.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/10 19:37:44 by kmira            ###   ########.fr       */
+/*   Updated: 2020/10/24 18:51:10 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_normal_level	*alloc__of_level_1(void)
 
 	result->entities[0].type_spaceship = spawn_player(1);
 	result->player = result->entities[0].type_spaceship;
-
+	make_map(result);
 	return (result);
 }
 
@@ -52,43 +52,18 @@ void			update_of_level_1(t_normal_level *level_1_cont)
 	while (level_1_cont->entities[i].type_entity.sprites.sprite != NULL)
 	{
 		level_1_cont->entities[i].type_entity.update(&level_1_cont->entities[i], level_1_cont);
-		level_1_cont->sprites[i] = level_1_cont->entities[i].type_entity.sprites;
-		level_1_cont->sprites[i].screen_x = level_1_cont->entities[i].type_entity.x;
-		level_1_cont->sprites[i].screen_y = level_1_cont->entities[i].type_entity.y;
+		set_sprite(&level_1_cont->sprites[i], &level_1_cont->entities[i]);
 		i++;
 	}
-	if (level_1_cont->game_tick % 7 == 0 && rand_min_max(0, 5) == 1)
-	{
-		level_1_cont->entities[i].type_enemy01 = spawn_enemy01();
-		level_1_cont->sprites[i] = level_1_cont->entities[i].type_entity.sprites;
-		level_1_cont->sprites[i].screen_x = level_1_cont->entities[i].type_entity.x;
-		level_1_cont->sprites[i].screen_y = level_1_cont->entities[i].type_entity.y;
-		i++;
-	}
-	if (level_1_cont->game_tick % 75 == 0)
-	{
-		level_1_cont->entities[i].type_enemy02 = spawn_enemy02();
-		level_1_cont->sprites[i] = level_1_cont->entities[i].type_entity.sprites;
-		level_1_cont->sprites[i].screen_x = level_1_cont->entities[i].type_entity.x;
-		level_1_cont->sprites[i].screen_y = level_1_cont->entities[i].type_entity.y;
-		i++;
-	}
-
+	// if (level_1_cont->game_tick % 3 == 0 && rand_min_max(0, 3) == 1)
+	// {
+	// 	level_1_cont->entities[i].type_enemy01 = spawn_enemy01();
+	// 	set_sprite(&level_1_cont->sprites[i], &level_1_cont->entities[i]);
+	// 	i++;
+	// }
 	clean_up_empty_sprites(level_1_cont->entities, level_1_cont->sprites);
-
-	i = 0;
-	while (level_1_cont->entities[i].type_entity.sprites.sprite != NULL)
-		i++;
-
-	int hp = (level_1_cont->entities[0].type_spaceship.class.hitpoints) / 20;
-	level_1_cont->sprites[i].sprite = hitpoints_sprite();
-	level_1_cont->sprites[i].sprite_attribute = hitpoints_attribute();
-	memset(level_1_cont->sprites[i].sprite, '/', hp);
-	level_1_cont->sprites[i].sprite[hp] = '\0';
-	level_1_cont->sprites[i].screen_x = level_1_cont->entities[0].type_entity.x;
-	level_1_cont->sprites[i].screen_y = level_1_cont->entities[0].type_entity.y - 2;
-
-	level_1_cont->sprites[i + 1] = NULL_SPRITE;
+	make_map(level_1_cont);
+	display_hp(level_1_cont);
 
 	level_1_cont->game_tick = level_1_cont->game_tick + 1;
 }
@@ -101,6 +76,15 @@ void			clean__of_level_1(t_normal_level *level_1_cont)
 
 void			enter_level_1(int *scene)
 {
+	// INIT(normal_level, level_1);
+	//  RENDER(normal_level, level_1);
+	//  while (IN(normal_level, level_1)) { GET_USER_INPUT(normal_level, level_1);
+	//  UPDATE_STATE(level_1);
+	//  RENDER(normal_level, level_1);
+	//  usleep(GAME_TICK);
+	//  } CLEAN_UP(normal_level, level_1);
+	//  TRANSITION(level_1);
+
 	SCENE_LOOP(normal_level, level_1);
 	(void)scene;
 }

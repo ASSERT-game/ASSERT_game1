@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scene_normal_level.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 07:34:29 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/12 16:21:38 by kmira            ###   ########.fr       */
+/*   Updated: 2020/10/24 18:21:59 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct		s_normal_level
 int					break__of_normal_level(t_normal_level *level_1_cont);
 void				listen_of_normal_level(WINDOW *window, t_game_input *input);
 void				clean_up_empty_sprites(t_pawn *entities, t_sprite *sprites);
+void				make_map(t_normal_level *level_cont);
 
 t_spaceship			spawn_player(int no);
 
@@ -111,5 +112,7 @@ void				use_heal(t_spaceship *player);
 */
 
 int					rand_min_max(int min, int max);
+void				set_sprite(t_sprite *sprite, t_pawn *entity);
+void				display_hp(t_normal_level *level_cont);
 
 #endif

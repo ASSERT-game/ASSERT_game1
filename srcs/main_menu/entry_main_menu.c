@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   entry_main_menu.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 16:36:05 by kmira            ###   ########.fr       */
+/*   Updated: 2020/10/24 18:39:07 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_main_menu	*alloc__of_main_menu(void)
 
 	result->sprites[0].sprite = main_menu_sprite();
 	result->sprites[0].sprite_attribute = main_menu_attribute();
-	result->sprites[0].screen_x = 103;
+	result->sprites[0].screen_x = 50;
 	result->sprites[0].screen_y = 3;
 
 	result->sprites[1] = NULL_SPRITE;

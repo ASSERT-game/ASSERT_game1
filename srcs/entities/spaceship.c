@@ -3,15 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   spaceship.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:12:38 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/12 16:34:27 by kmira            ###   ########.fr       */
+/*   Updated: 2020/10/24 18:46:59 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
 #include "scene_normal_level.h"
+
+void		player_collide(t_pawn *self, t_pawn *collision)
+{
+	if (collision->type_entity.type[0] == 'B')
+		self->type_spaceship.class.hitpoints = self->type_spaceship.class.hitpoints - 50;
+	if (collision->type_entity.type[0] == 'e')
+		self->type_spaceship.class.hitpoints = self->type_spaceship.class.hitpoints - 100;
+}
 
 t_spaceship	spawn_player(int no)
 {
@@ -21,8 +29,9 @@ t_spaceship	spawn_player(int no)
 	player.e.type[7] = no + '0';
 	player.e.sprites.sprite = spaceship02_sprite();
 	player.e.sprites.sprite_attribute = spaceship02_attributes();
+	player.e.collide = player_collide;
 	player.e.update = player_step;
-	player.class.hitpoints = 100;
+	player.class.hitpoints = 1000;
 	player.e.x = 5;
 	player.e.y = 5;
 	player.class.bullet.spawn = fire_bullet02;
@@ -36,21 +45,27 @@ void		player_step(t_pawn *pawn, t_normal_level *level_cont)
 
 	input = level_cont->input;
 	player = &(pawn->type_spaceship);
-	player->class.hitpoints = level_cont->player.class.hitpoints - 1;
+	level_cont->player.class.hitpoints = player->class.hitpoints;
+	player->class.hitpoints = level_cont->player.class.hitpoints;
 	if (input.keys_pressed & FLAG_MOVE_UP)
-		player->e.y = player->e.y - 1;
+		player->e.y = player->e.y - 2;
 	if (input.keys_pressed & FLAG_MOVE_DOWN)
-		player->e.y = player->e.y + 1;
+		player->e.y = player->e.y + 2;
 	if (input.keys_pressed & FLAG_MOVE_LEFT)
 		player->e.x = player->e.x - 2;
 	if (input.keys_pressed & FLAG_MOVE_RIGHT)
 		player->e.x = player->e.x + 2;
-	if (input.keys_pressed & FLAG_FIRE)
+	if (input.keys_pressed & FLAG_FIRE && pawn->type_spaceship.class.fire_capable == 1)
+	{
 		player->class.bullet.spawn(level_cont->entities, player->e.y, player->e.x);
+		pawn->type_spaceship.class.fire_capable = 0;
+	}
 	if (input.keys_pressed & FLAG_SPECIAL)
 		use_special(player);
 	if (input.keys_pressed & FLAG_HEAL)
 		use_heal(player);
+	if (level_cont->game_tick % 5 == 0)
+		pawn->type_spaceship.class.fire_capable = 1;
 	level_cont->player = *player;
 }
 

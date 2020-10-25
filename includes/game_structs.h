@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 21:29:40 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 16:04:38 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/12 21:23:21 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 
 # include <ncurses.h>
 
+typedef union s_pawn t_pawn;
+
 typedef struct	s_char_map
 {
 	char		*line;
-	char		frame[WIN_ROWS * WIN_COLS + 1];
+	t_pawn		*frame[GAME_ROWS * GAME_COLS + 1];
+	char		g_frame[GAME_ROWS * GAME_COLS + 1];
 
 }				t_char_map;
 

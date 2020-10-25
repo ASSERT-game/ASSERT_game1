@@ -6,12 +6,19 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:15:32 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/12 16:16:12 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/12 21:08:50 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
 #include "scene_normal_level.h"
+
+void		enemy_02_collide(t_pawn *self, t_pawn *collision)
+{
+	(void)self;
+	(void)collision;
+	;
+}
 
 t_enemy02	spawn_enemy02(void)
 {
@@ -20,6 +27,7 @@ t_enemy02	spawn_enemy02(void)
 	enemy.e.type = strdup("enemy");
 	enemy.e.sprites.sprite = enemy02_sprite();
 	enemy.e.sprites.sprite_attribute = enemy02_attribute();
+	enemy.e.collide = enemy_02_collide;
 	enemy.e.update = enemy02_step;
 	enemy.class.hitpoints = 100;
 	enemy.e.x = GAME_COLS - 1;

@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 20:43:10 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 15:22:23 by kmira            ###   ########.fr       */
+/*   Updated: 2019/08/12 23:44:04 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_entity
 	char			*type;
 	t_sprite		sprites;
 	void			(*update)(t_pawn *, t_normal_level *);
+	void			(*collide)(t_pawn *, t_pawn *);
 	int				x;
 	int				y;
 }				t_entity;
@@ -49,6 +50,7 @@ typedef union	s_spaceship
 		t_entity		e;
 		t_spawn_bullet	bullet;
 		int				hitpoints;
+		int				fire_capable;
 	}			class;
 }				t_spaceship;
 

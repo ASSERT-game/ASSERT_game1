@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   default.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:13:34 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 16:32:18 by kmira            ###   ########.fr       */
+/*   Updated: 2020/10/24 18:53:18 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 ** GAME CONSTANTS
 */
 
-# define GAME_ROWS (50)
-# define GAME_COLS (160)
+// # define GAME_ROWS (70)
+// # define GAME_COLS (150)
+# define GAME_COLS (100)
+# define GAME_ROWS (35)
 
 # define TOP_WINDOW_CLIP (2)
 # define SIDE_WINDOW_CLIP (2)
@@ -92,6 +94,9 @@ int		*enemy01_attribute(void);
 
 char	*bullet01_sprite(void);
 int		*bullet01_attribute(void);
+
+char	*enemy01_sprite_alt(void);
+int		*enemy01_attribute_alt(void);
 
 char	*bullet02_sprite(void);
 int		*bullet02_attribute(void);

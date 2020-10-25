@@ -6,7 +6,7 @@
 /*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/04 22:00:55 by kmira             #+#    #+#             */
-/*   Updated: 2019/08/07 16:31:58 by kmira            ###   ########.fr       */
+/*   Updated: 2020/01/27 03:47:13 by kmira            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,42 @@ int		*enemy01_attribute(void)
 	enemy01_attribute[11] = COLOR_PAIR(0);
 	enemy01_attribute[12] = COLOR_PAIR(0);
 	enemy01_attribute[13] = COLOR_PAIR(4);
+	enemy01_attribute[14] = COLOR_PAIR(0);
+	return (enemy01_attribute);
+}
+
+char	*enemy01_sprite_alt(void)
+{
+	static char *enemy01_char_sprite;
+
+	if (enemy01_char_sprite != 0)
+		return (enemy01_char_sprite);
+	else
+		enemy01_char_sprite = " /\n<+\n o\n<+\n \\";
+	return (enemy01_char_sprite);
+}
+
+int		*enemy01_attribute_alt(void)
+{
+	static int	*enemy01_attribute;
+
+	if (enemy01_attribute != 0)
+		return (enemy01_attribute);
+	enemy01_attribute = malloc(sizeof(*enemy01_attribute) * (15));
+	enemy01_attribute[0] = COLOR_PAIR(0);
+	enemy01_attribute[1] = COLOR_PAIR(7);
+	enemy01_attribute[2] = COLOR_PAIR(0);
+	enemy01_attribute[3] = COLOR_PAIR(6) | A_BOLD;
+	enemy01_attribute[4] = COLOR_PAIR(6);
+	enemy01_attribute[5] = COLOR_PAIR(0);
+	enemy01_attribute[6] = COLOR_PAIR(0);
+	enemy01_attribute[7] = COLOR_PAIR(0);
+	enemy01_attribute[8] = COLOR_PAIR(0);
+	enemy01_attribute[9] = COLOR_PAIR(6) | A_BOLD;
+	enemy01_attribute[10] = COLOR_PAIR(6);
+	enemy01_attribute[11] = COLOR_PAIR(0);
+	enemy01_attribute[12] = COLOR_PAIR(0);
+	enemy01_attribute[13] = COLOR_PAIR(7);
 	enemy01_attribute[14] = COLOR_PAIR(0);
 	return (enemy01_attribute);
 }

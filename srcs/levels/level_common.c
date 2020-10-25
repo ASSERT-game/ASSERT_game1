@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   level_common.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kmira <kmira@student.42.fr>                +#+  +:+       +#+        */
+/*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 07:54:24 by kmira             #+#    #+#             */
-/*   Updated: 2020/01/27 03:52:34 by kmira            ###   ########.fr       */
+/*   Updated: 2020/10/24 20:12:06 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "default.h"
 #include "scene_normal_level.h"
 
-#define KEY_ITER 1
+#define KEY_ITER 30
 
 int			break__of_normal_level(t_normal_level *level_cont)
 {

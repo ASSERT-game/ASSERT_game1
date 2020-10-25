@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 16:12:38 by kmira             #+#    #+#             */
-/*   Updated: 2020/10/24 18:46:59 by home             ###   ########.fr       */
+/*   Updated: 2020/10/24 19:53:27 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		player_step(t_pawn *pawn, t_normal_level *level_cont)
 		use_special(player);
 	if (input.keys_pressed & FLAG_HEAL)
 		use_heal(player);
-	if (level_cont->game_tick % 5 == 0)
+	if (level_cont->game_tick % 7 == 0)
 		pawn->type_spaceship.class.fire_capable = 1;
 	level_cont->player = *player;
 }

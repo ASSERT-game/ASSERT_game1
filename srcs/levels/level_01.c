@@ -6,7 +6,7 @@
 /*   By: home <home@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 04:30:58 by kmira             #+#    #+#             */
-/*   Updated: 2020/10/24 18:51:10 by home             ###   ########.fr       */
+/*   Updated: 2020/10/24 21:11:42 by home             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ void			update_of_level_1(t_normal_level *level_1_cont)
 		set_sprite(&level_1_cont->sprites[i], &level_1_cont->entities[i]);
 		i++;
 	}
-	// if (level_1_cont->game_tick % 3 == 0 && rand_min_max(0, 3) == 1)
-	// {
-	// 	level_1_cont->entities[i].type_enemy01 = spawn_enemy01();
-	// 	set_sprite(&level_1_cont->sprites[i], &level_1_cont->entities[i]);
-	// 	i++;
-	// }
+	if (level_1_cont->game_tick % 3 == 0 && rand_min_max(0, 3) == 1)
+	{
+		level_1_cont->entities[i].type_enemy01 = spawn_enemy01();
+		set_sprite(&level_1_cont->sprites[i], &level_1_cont->entities[i]);
+		i++;
+	}
 	clean_up_empty_sprites(level_1_cont->entities, level_1_cont->sprites);
 	make_map(level_1_cont);
 	display_hp(level_1_cont);

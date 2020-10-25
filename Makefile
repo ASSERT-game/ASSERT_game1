@@ -10,9 +10,9 @@ SRCS = \
 		srcs/entities/spaceship_projectile	\
 		srcs/entities/spaceship				\
 		srcs/exit/entry_exit				\
-		srcs/levels/level1					\
+		srcs/levels/level_01				\
+		srcs/levels/level_common			\
 		srcs/levels/level_utils				\
-		srcs/levels/levels_common			\
 		srcs/main_menu/entry_main_menu		\
 		srcs/transition/transition			\
 		srcs/entry							\

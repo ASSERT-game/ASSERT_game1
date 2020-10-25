@@ -13,6 +13,8 @@ projectiles it spawns. This is shown midway through though the game play below. 
 <img align="top" height="600" src="https://github.com/ASSERT-game/ASSERT_game1/blob/master/resources/gameplay.gif" />
 <br>
 
+To run the game, do ```make all```, then the executable ```./beta_game1``` can be ran.
+
 Controls:
 * Movement:
 ```w a s d```

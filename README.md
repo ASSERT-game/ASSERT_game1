@@ -37,7 +37,7 @@ o
 v
 ```
 
-Colors however are however painfully made using ncurses attributes, and lining each of the attribute spots with the
+Colors are however painfully made using ncurses attributes, and lining each of the attribute spots with the
 correct sprite character. A time consuming task. Also need to double buffer the game to ensure collisions work correctly.
 
 Usage of [macros](https://github.com/ASSERT-game/ASSERT_game1/blob/master/includes/macros.h), [unions, and structs](https://github.com/ASSERT-game/ASSERT_game1/blob/master/includes/entity.h) allow me to create template code that turns out to be the heart of game loop.
